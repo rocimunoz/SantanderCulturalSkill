@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<assembly>
+	<id>installer</id>
+	<formats>
+	  <!-- formato de salida del empaquetado -->
+		<format>zip</format>
+	</formats>
+	<!-- no queremos que el empaquetado tenga como raíz un directorio con el nombre del módulo -->
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<!-- las dependencias del módulo (las librerías) se incluirán en un directorio /lib-->
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>/lib</outputDirectory>
+			<scope>runtime</scope>
+		</dependencySet>
+	</dependencySets>
+	<!-- además el contenido del zip incluirá los siguientes directorios -->
+	<fileSets>
+	  <!-- irá al directorio lib el contenido del directorio target del módulo batch -->
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>lib</outputDirectory>
+			<!-- a exclusión del empaquetado del javadoc y los fuentes -->
+			<excludes>
+				<exclude>*-source.jar</exclude>
+				<exclude>*-javadoc.jar</exclude>
+				
+			</excludes>
+			<!-- se incluirá la propia librería del módulo batch -->
+			<includes>
+				<include>*.jar</include>
+			</includes>
+		</fileSet>
+		<!-- crearemos un directorio de salida para los logs de los procesos -->
+		<fileSet>
+			<directory>src/main/logs</directory>
+			<outputDirectory>/logs</outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>

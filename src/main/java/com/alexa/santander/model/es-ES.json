@@ -1,0 +1,169 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "santander cultural",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CharacterIntent",
+                    "slots": [
+                        {
+                            "name": "character",
+                            "type": "character",
+                            "samples": [
+                                "{character}"
+                            ]
+                        },
+                        {
+                            "name": "accion",
+                            "type": "accion"
+                        }
+                    ],
+                    "samples": [
+                        "Necesito información sobre personajes {character}",
+                        "Quiero saber cosas sobre personajes {character}",
+                        "Dame información sobre personajes {character}",
+                        "Personaje {character}",
+                        "Personajes {character}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "categoria",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "calles"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "personajes"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "accion",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Me gustaría",
+                                "synonyms": [
+                                    "Me apetecería"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Necesito",
+                                "synonyms": [
+                                    "Quiero"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Dame"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "character",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "aleatorio",
+                                "synonyms": [
+                                    "cualquiera"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CharacterIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "character",
+                            "type": "character",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.7653266933.275823450845"
+                            }
+                        },
+                        {
+                            "name": "accion",
+                            "type": "accion",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.7653266933.412413716890",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿Qué persona estás buscando?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.7653266933",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Resumiendo, estás buscando el personaje{character}"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.7653266933.275823450845",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Especifica el personaje que quieras. Si te da igual dí aleatorio"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.7653266933.275823450845",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Si"
+                    }
+                ]
+            }
+        ]
+    }
+}
