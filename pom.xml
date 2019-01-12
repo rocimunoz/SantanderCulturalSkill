@@ -27,6 +27,12 @@
 			<artifactId>ask-sdk-apache-client</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+		
+		<dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-dynamodb</artifactId>
+            <version>1.11.127</version>
+        </dependency>
 	</dependencies>
 
 	<build>

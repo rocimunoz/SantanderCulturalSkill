@@ -9,7 +9,14 @@
                 },
                 {
                     "name": "AMAZON.HelpIntent",
-                    "samples": []
+                    "samples": [
+                        "no sé cómo funciona",
+                        "enséñame cómo funciona",
+                        "dime cómo funciona",
+                        "ayuda",
+                        "ayúdame",
+                        "cómo funciona"
+                    ]
                 },
                 {
                     "name": "AMAZON.StopIntent",
@@ -35,11 +42,32 @@
                         }
                     ],
                     "samples": [
+                        "Cuéntame algo sobre personajes {character}",
+                        "Quiero personaje {character}",
+                        "Quiero personajes {character}",
                         "Necesito información sobre personajes {character}",
                         "Quiero saber cosas sobre personajes {character}",
                         "Dame información sobre personajes {character}",
-                        "Personaje {character}",
-                        "Personajes {character}"
+                        "Busca personaje {character}",
+                        "Busca personajes {character}"
+                    ]
+                },
+                {
+                    "name": "CuriosityIntent",
+                    "slots": [
+                        {
+                            "name": "curiosity",
+                            "type": "curiosity"
+                        }
+                    ],
+                    "samples": [
+                        "Cuéntame {curiosity}",
+                        "Dame {curiosity}",
+                        "Quiero aprender algo",
+                        "Cuéntame algo",
+                        "Enséñame algo",
+                        "Dame una curiosidad",
+                        "Cúentame una curiosidad"
                     ]
                 }
             ],
@@ -97,6 +125,31 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "curiosity",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "anécdotas"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anécdota"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "curiosidades"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "curiosidad"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -125,7 +178,8 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "delegationStrategy": "SKILL_RESPONSE"
         },
         "prompts": [
             {

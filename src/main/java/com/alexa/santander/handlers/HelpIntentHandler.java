@@ -19,10 +19,13 @@ public class HelpIntentHandler implements RequestHandler
 
 	public Optional<Response> handle(HandlerInput input) {
 		
-		return input.getResponseBuilder()
-		.withShouldEndSession(false)//
-		.withSimpleCard("SantanderCultural", CommonUtils.HELP_MESSAGE)//
-		.build();
+		
+		return input.getResponseBuilder().withSpeech(CommonUtils.HELP_MESSAGE)
+				.withSimpleCard("SantanderCultural", CommonUtils.HELP_MESSAGE).withShouldEndSession(false).build();
+				
+
+		
+		
 		
 			}
 

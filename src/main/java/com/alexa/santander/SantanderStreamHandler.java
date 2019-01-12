@@ -3,6 +3,7 @@ package com.alexa.santander;
 
 import com.alexa.santander.handlers.CancelAndStopIntentHandler;
 import com.alexa.santander.handlers.CharacterIntentHandler;
+import com.alexa.santander.handlers.CuriosityIntentHandler;
 import com.alexa.santander.handlers.FallBackIntentHandler;
 import com.alexa.santander.handlers.HelpIntentHandler;
 import com.alexa.santander.handlers.LaunchRequestHandler;
@@ -21,7 +22,7 @@ public class SantanderStreamHandler extends SkillStreamHandler
 
 	return Skills.standard().addRequestHandlers(
 		new CancelAndStopIntentHandler(), //
-		//new CategoryIntentHandler(), //
+		new CuriosityIntentHandler(), //
 		new CharacterIntentHandler(),
 		new HelpIntentHandler(), //
 		new LaunchRequestHandler(), //

@@ -9,8 +9,8 @@ public  class  CommonUtils {
 	
 	
 		
-	 public static final String WELCOME_MESSAGE = "Bienvenido a Santander Cultural. Puedes pedirme información sobre personajes o calles";
-	 public static final String HELP_MESSAGE = "Con Santander Cultural puedes pedir información sobre Personajes y Calles. Haz la prueba a decir, dame información sobre personajes";
+	 public static final String WELCOME_MESSAGE = "Bienvenido a Santander Cultural. Puedes pedirme información sobre personajes o curiosidades";
+	 public static final String HELP_MESSAGE = "Es muy sencillo. Prueba a decir dame información sobre Personajes o dame una curiosidad";
 
 	 
 	 //PERSONAJES
