@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import com.alexa.santander.dao.CuriosityItem;
+import com.alexa.santander.configuration.DatabaseConfiguration;
 import com.alexa.santander.dao.CuriosityDao;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
@@ -31,12 +32,11 @@ public class CuriosityIntentHandler implements RequestHandler {
 
 	public Optional<Response> handle(HandlerInput input) {
 		String resultSpeechText = "uno";
-		System.setProperty("aws.accessKeyId", "xxxxx");  
-		System.setProperty("aws.secretKey", "xxxxx");
 		Regions REGION = Regions.US_EAST_1;
 
 		
 		try {
+			DatabaseConfiguration.initSecurityProperties();
 			
 			AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().withRegion(REGION).build();
 			 
@@ -53,4 +53,6 @@ public class CuriosityIntentHandler implements RequestHandler {
 				.withSimpleCard("SantanderCultural", resultSpeechText).build();
 
 	}
+	
+
 }
