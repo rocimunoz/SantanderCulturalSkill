@@ -1,4 +1,4 @@
-package com.alexa.santander.dao;
+package com.alexa.santander.dao.curiosity;
 
 import java.util.List;
 

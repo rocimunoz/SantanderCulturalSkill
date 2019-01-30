@@ -35,10 +35,6 @@
                             "samples": [
                                 "{character}"
                             ]
-                        },
-                        {
-                            "name": "accion",
-                            "type": "accion"
                         }
                     ],
                     "samples": [
@@ -69,41 +65,62 @@
                         "Dame una curiosidad",
                         "Cúentame una curiosidad"
                     ]
+                },
+                {
+                    "name": "WordsIntent",
+                    "slots": [
+                        {
+                            "name": "action",
+                            "type": "action"
+                        }
+                    ],
+                    "samples": [
+                        "{action} una palabra"
+                    ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": [
+                        "Vale",
+                        "Claro",
+                        "Venga",
+                        "Si"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": [
+                        "No"
+                    ]
                 }
             ],
             "types": [
                 {
-                    "name": "categoria",
+                    "name": "action",
                     "values": [
                         {
                             "name": {
-                                "value": "calles"
+                                "value": "Explícame"
                             }
                         },
                         {
                             "name": {
-                                "value": "personajes"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "accion",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "Me gustaría",
-                                "synonyms": [
-                                    "Me apetecería"
-                                ]
+                                "value": "Cuéntame"
                             }
                         },
                         {
                             "name": {
-                                "value": "Necesito",
-                                "synonyms": [
-                                    "Quiero"
-                                ]
+                                "value": "Quiero"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Me gustaría"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Necesito"
                             }
                         },
                         {
@@ -168,10 +185,18 @@
                             "prompts": {
                                 "elicitation": "Elicit.Slot.7653266933.275823450845"
                             }
-                        },
+                        }
+                    ]
+                },
+                {
+                    "name": "CuriosityIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
                         {
-                            "name": "accion",
-                            "type": "accion",
+                            "name": "curiosity",
+                            "type": "curiosity",
                             "confirmationRequired": false,
                             "elicitationRequired": false,
                             "prompts": {}
@@ -215,6 +240,15 @@
                     {
                         "type": "PlainText",
                         "value": "Si"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.709556819191",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Quieres otra?"
                     }
                 ]
             }

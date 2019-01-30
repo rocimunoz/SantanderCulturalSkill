@@ -6,6 +6,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import com.alexa.santander.configuration.DatabaseConfiguration;
+import com.alexa.santander.dao.character.CharacterDao;
+import com.alexa.santander.dao.character.CharacterItem;
+import com.alexa.santander.dao.curiosity.CuriosityDao;
+import com.alexa.santander.dao.curiosity.CuriosityItem;
 import com.alexa.santander.utils.CommonUtils;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -17,9 +22,16 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.model.dialog.DelegateDirective;
 import com.amazon.ask.response.ResponseBuilder;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 
 public class CharacterIntentHandler implements RequestHandler {
 
+	private CharacterDao characterDao;
+	private Regions REGION = Regions.US_EAST_1;
+
+	
 	public boolean canHandle(HandlerInput input) {
 		return input.matches(intentName("CategoryIntent")) || input.matches(intentName("CharacterIntent"));
 		
@@ -29,7 +41,7 @@ public class CharacterIntentHandler implements RequestHandler {
 		
 		String resultSpeechText = "prueba";
 		ResponseBuilder responseBuilder = null;
-//		
+		
 		
 		DialogState dialogState = ((IntentRequest) input.getRequestEnvelope().getRequest()).getDialogState();
 		if (dialogState == null) {
@@ -57,7 +69,6 @@ public class CharacterIntentHandler implements RequestHandler {
 			Intent updatedIntent = intentRequest.getIntent();
 			
 			responseBuilder.addDelegateDirective(updatedIntent);
-			//responseBuilder.withShouldEndSession(true);
 			return responseBuilder.build();
 			
 		}else if (dialogState.getValue().equals(DialogState.COMPLETED.getValue())) {
@@ -68,8 +79,17 @@ public class CharacterIntentHandler implements RequestHandler {
 			Slot slotCharacter = slots.get("character");
 			if (slotCharacter.getValue().equals("aleatorio")) {
 				resultSpeechText = "te tengo que dar uno aleatorio";
+				
+				DatabaseConfiguration.initSecurityProperties();
+				
+				AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().withRegion(REGION).build();
+				 
+				characterDao = new CharacterDao(client);
+				
+				CharacterItem item = characterDao.getRandomCharacter();
+				resultSpeechText =  item.getName() + ": " + item.getDescription();
+				
 			}else {
-				//resultSpeechText = "te tengo que hablar de " + slotCharacter.getValue();
 				resultSpeechText = CommonUtils.CHARACTER_ATAULFO;
 			}
 		}
