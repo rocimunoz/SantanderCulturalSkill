@@ -29,13 +29,23 @@ public class YesIntentHandler implements RequestHandler
             
 			HandlerDispatcher dispatcher = new HandlerDispatcher();
 			resultIntent = dispatcher.manageDictionary();
-        }else if (sessionAttributes.get("curiosity")!=null && sessionAttributes.get("curiosity").equals("STARTED")) {
+			return input.getResponseBuilder().withSpeech(resultIntent)
+					.withSimpleCard("SantanderCultural", resultIntent).withShouldEndSession(true).build();
+        
+		}else if (sessionAttributes.get("curiosity")!=null && sessionAttributes.get("curiosity").equals("STARTED")) {
+        	
         	HandlerDispatcher dispatcher = new HandlerDispatcher();
 			resultIntent = dispatcher.manageCuriosity();
+			return input.getResponseBuilder().withSpeech(resultIntent)
+					.withSimpleCard("SantanderCultural", resultIntent).withShouldEndSession(true).build();
+        }
+        else {
+        	resultIntent = "Lo siento. Se hap producido un error";
+        	return input.getResponseBuilder().withSpeech(resultIntent)
+    				.withSimpleCard("SantanderCultural", resultIntent).withShouldEndSession(true).build();
         }
 		
-		return input.getResponseBuilder().withSpeech(resultIntent)
-				.withSimpleCard("SantanderCultural", resultIntent).withShouldEndSession(true).build();
+		
 				
 
 		

@@ -2,11 +2,15 @@ package com.alexa.santander.handlers;
 
 
 
+
+
 import com.alexa.santander.configuration.DatabaseConfiguration;
+
 import com.alexa.santander.dao.curiosity.CuriosityDao;
 import com.alexa.santander.dao.curiosity.CuriosityItem;
 import com.alexa.santander.dao.dictionary.DictionaryDao;
 import com.alexa.santander.dao.dictionary.DictionaryItem;
+
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -19,6 +23,7 @@ public class HandlerDispatcher {
 
 	private DictionaryDao dictionaryDao;
 	private CuriosityDao curiosityDao;
+	
 
 	public String manageCuriosity() {
 		String resultSpeechText = "";
@@ -35,7 +40,8 @@ public class HandlerDispatcher {
 
 		return resultSpeechText;
 	}
-
+	
+	
 	public String manageDictionary() {
 
 		String resultSpeechText = "";

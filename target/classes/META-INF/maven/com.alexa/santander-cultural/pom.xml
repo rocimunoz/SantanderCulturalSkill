@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.alexa</groupId>
+	<artifactId>santander-cultural</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.amazon.alexa</groupId>
+			<artifactId>ask-sdk</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazon.alexa</groupId>
+			<artifactId>ask-sdk-core</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazon.alexa</groupId>
+			<artifactId>ask-sdk-lambda-support</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazon.alexa</groupId>
+			<artifactId>ask-sdk-apache-client</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.11.127</version>
+		</dependency>
+		
+
+	</dependencies>
+
+	<build>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<forceJavacCompilerUse>true</forceJavacCompilerUse>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<!-- ruta al descriptor del empaquetado: por convención se incluye 
+							en el directorio assembly -->
+						<descriptor>src/main/resources/assembly/installer.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<!-- enganchamos la ejecución del plugin al ciclo de vida de maven, en 
+					concreto a la fase de instalación de este modo al instalar el artefacto generará 
+					nuestro distribuible del módulo batch -->
+				<executions>
+					<execution>
+						<id>package-native</id>
+						<phase>install</phase>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+
+
+		</resources>
+	</build>
+</project>

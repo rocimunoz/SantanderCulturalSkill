@@ -1,0 +1,143 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "santander cultural",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "silencio"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "no sé cómo funciona",
+                        "enséñame cómo funciona",
+                        "dime cómo funciona",
+                        "ayuda",
+                        "ayúdame",
+                        "cómo funciona"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "cierra"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CuriosityIntent",
+                    "slots": [
+                        {
+                            "name": "curiosity",
+                            "type": "curiosity"
+                        }
+                    ],
+                    "samples": [
+                        "Cuéntame {curiosity}",
+                        "Dame {curiosity}",
+                        "Quiero aprender algo",
+                        "Cuéntame algo",
+                        "Enséñame algo",
+                        "Dame una curiosidad",
+                        "Cúentame una curiosidad"
+                    ]
+                },
+                {
+                    "name": "WordsIntent",
+                    "slots": [
+                        {
+                            "name": "action",
+                            "type": "action"
+                        }
+                    ],
+                    "samples": [
+                        "{action} una palabra"
+                    ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": [
+                        "Vale",
+                        "Claro",
+                        "Venga",
+                        "Si"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": [
+                        "No"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "action",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Explícame"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Cuéntame"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Quiero"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Me gustaría"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Necesito"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Dame"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "curiosity",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "anécdotas"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anécdota"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "curiosidades"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "curiosidad"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

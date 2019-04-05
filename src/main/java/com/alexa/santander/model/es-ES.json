@@ -5,7 +5,9 @@
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
-                    "samples": []
+                    "samples": [
+                        "silencio"
+                    ]
                 },
                 {
                     "name": "AMAZON.HelpIntent",
@@ -20,33 +22,13 @@
                 },
                 {
                     "name": "AMAZON.StopIntent",
-                    "samples": []
+                    "samples": [
+                        "cierra"
+                    ]
                 },
                 {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
-                },
-                {
-                    "name": "CharacterIntent",
-                    "slots": [
-                        {
-                            "name": "character",
-                            "type": "character",
-                            "samples": [
-                                "{character}"
-                            ]
-                        }
-                    ],
-                    "samples": [
-                        "Cuéntame algo sobre personajes {character}",
-                        "Quiero personaje {character}",
-                        "Quiero personajes {character}",
-                        "Necesito información sobre personajes {character}",
-                        "Quiero saber cosas sobre personajes {character}",
-                        "Dame información sobre personajes {character}",
-                        "Busca personaje {character}",
-                        "Busca personajes {character}"
-                    ]
                 },
                 {
                     "name": "CuriosityIntent",
@@ -131,19 +113,6 @@
                     ]
                 },
                 {
-                    "name": "character",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "aleatorio",
-                                "synonyms": [
-                                    "cualquiera"
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
                     "name": "curiosity",
                     "values": [
                         {
@@ -169,89 +138,6 @@
                     ]
                 }
             ]
-        },
-        "dialog": {
-            "intents": [
-                {
-                    "name": "CharacterIntent",
-                    "confirmationRequired": false,
-                    "prompts": {},
-                    "slots": [
-                        {
-                            "name": "character",
-                            "type": "character",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.7653266933.275823450845"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "CuriosityIntent",
-                    "delegationStrategy": "ALWAYS",
-                    "confirmationRequired": false,
-                    "prompts": {},
-                    "slots": [
-                        {
-                            "name": "curiosity",
-                            "type": "curiosity",
-                            "confirmationRequired": false,
-                            "elicitationRequired": false,
-                            "prompts": {}
-                        }
-                    ]
-                }
-            ],
-            "delegationStrategy": "SKILL_RESPONSE"
-        },
-        "prompts": [
-            {
-                "id": "Elicit.Slot.7653266933.412413716890",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "¿Qué persona estás buscando?"
-                    }
-                ]
-            },
-            {
-                "id": "Confirm.Intent.7653266933",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Resumiendo, estás buscando el personaje{character}"
-                    }
-                ]
-            },
-            {
-                "id": "Elicit.Slot.7653266933.275823450845",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Especifica el personaje que quieras. Si te da igual dí aleatorio"
-                    }
-                ]
-            },
-            {
-                "id": "Confirm.Slot.7653266933.275823450845",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Si"
-                    }
-                ]
-            },
-            {
-                "id": "Confirm.Intent.709556819191",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "Quieres otra?"
-                    }
-                ]
-            }
-        ]
+        }
     }
 }
